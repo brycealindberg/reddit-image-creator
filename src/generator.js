@@ -41,7 +41,7 @@ async function generateRedditImage(postData) {
     const browser = await initBrowser();
     page = await browser.newPage();
     
-    // Set viewport to 16:9 ratio (1920x1080)
+    // Set viewport to responsive 16:9 ratio that fits the screen
     await page.setViewport({
       width: 1920,
       height: 1080,

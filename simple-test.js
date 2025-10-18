@@ -6,7 +6,7 @@ const fs = require('fs');
 const postData = JSON.stringify({
   "subreddit": "r/AITAH",
   "author": "u/Imper1ousPerfect",
-  "title": "AITAH for blowing up my relationship with my sister because she was an affair partner?",
+  "title": "AITAH for blowing up my relationship with my sister",
   "upvotes": "144",
   "comments": "22",
   "timeAgo": "11d ago"
