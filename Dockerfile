@@ -4,6 +4,7 @@ FROM node:20-slim as base
 # Install system dependencies for Puppeteer
 RUN apt-get update && apt-get install -y \
 wget \
+curl \
 gnupg \
 ca-certificates \
 procps \
