@@ -39,8 +39,16 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Set environment variables for Puppeteer
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
+ENV PUPPETEER_DOWNLOAD_HOST=https://storage.googleapis.com
+
+# Install dependencies with timeout and retry
+RUN npm config set fetch-timeout 300000 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm ci --omit=dev --timeout=300000 --retry=3 && \
+    npm cache clean --force
 
 # Copy source code
 COPY src/ ./src/
